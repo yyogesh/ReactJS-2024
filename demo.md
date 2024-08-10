@@ -1,39 +1,34 @@
-1. ReactJS 
-2. Material Design
-3. Redux 
-4. Typescript/JavaScript ==> Basic JavaScript
-5. Formik
-6. Project
+2010 XHP 
 
-// 3 Month 60 min -- 90 min 
+FAXJS 2011 , html5 mistake (DOM)
 
-complete // login, forms, routing, dispaly, bind, security, custom
-// Test case  ==> Jest, @testing-library/react ==> Basic tests
+ReactJS 2012
+
+Facebook + ReactJS 2013 
+
+ReactJS Event 2014 Open Source
+
+2015 Netflix, React Native
+
+DOM ==> Document object model (DOM TREE) HTML ==> HEAD, body ==> table, form h1
+
+First render 
+Virtual DOM (Javscript Object) ==> ReactDOM
 
 
-// Test Case
-// React Native
-// SSR NextJS remix 
+1. CDN link ==> understanding 
+2. Create reat app ==> 
+3. Vite 
 
 
-webpack build 
-     +
-vite ==> vuejs 
+npx create-react-app my-app --template typescript
 
-// Create new Project 
-npx create-react-app my-app
 npm create vite@latest
 
+index
 
-Visual Studio code  ==> IDE 
-NODEJS download ==> Run time/ build
+default 
 
+webpack 
 
-Javascript 
-
-
-npm i 
-
-npm install
-
-
+vite
