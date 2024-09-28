@@ -65,6 +65,10 @@ export default App
 // sum(10, 5)
 // sum(undefined, {})
 
+// var a = 10
+// a = "asdf"
+// a = null
+
 
 // function sum1(a: number, b: number): number {
 //   return a + b;

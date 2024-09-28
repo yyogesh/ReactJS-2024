@@ -37,9 +37,9 @@ useReducer - declares a state variable with the update logic inside a reducer fu
 useLayoutEffect - fires before the browser repaints the screen. You can measure layout here. - done
 useInsertionEffect - fires before React makes changes to the DOM. Libraries can insert dynamic CSS here. - done
 useTransition - lets you mark a state transition as non-blocking and allow other updates to interrupt it - done.
-useDeferredValue - lets you defer updating a non-critical part of the UI and let other parts update first.
-useDebugValue - lets you customize the label React DevTools displays for your custom Hook.
-useId - lets a component associate a unique ID with itself. Typically used with accessibility APIs.
+useDeferredValue - lets you defer updating a non-critical part of the UI and let other parts update first - done.
+useDebugValue - lets you customize the label React DevTools displays for your custom Hook - done.
+useId - lets a component associate a unique ID with itself. Typically used with accessibility APIs - done.
 useSyncExternalStore - lets a component subscribe to an external store.
 useActionState - allows you to manage state of actions.
 Custom hooks - done
@@ -48,20 +48,19 @@ Custom hooks - done
 TypeScript in React
 
 Creating typed components
-Prop types with interfaces
-Generic components
+Prop types with interfaces - done.
+Generic components - done. <T>
 Typing hooks
 
 
 Styling in React
 
-CSS modules
-Styled-components
-CSS-in-JS solutions
+CSS modules - done.
+Styled-components - done.
+CSS-in-JS solutions - done.
 
 
 Forms and User Input
-
 Controlled components
 Uncontrolled components
 Form validation
@@ -72,6 +71,7 @@ HTTP Requests and API Integration
 Fetch API
 Axios
 Handling asynchronous operations
+React-query
 
 
 Routing in React

@@ -1,0 +1,18 @@
+.button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #61dafb;
+    color: #fff;
+}
+
+.button_active {
+    background-color: #fff;
+
+    [type="text"] { 
+        background-color: #fff;
+    }
+}
+
+/* [type="text"] {
+    padding: 8px 12px;
+} */
