@@ -60,35 +60,17 @@ Styled-components - done.
 CSS-in-JS solutions - done.
 
 
-Forms and User Input
-Controlled components
-Uncontrolled components
-Form validation
-
+Forms and User Input - done.
+Controlled components - done.
+Uncontrolled components - done.
+Form validation - done.
+Formik - done.
 
 HTTP Requests and API Integration
-
-Fetch API
-Axios
-Handling asynchronous operations
-React-query
-
-
-Routing in React
-
-React Router basics
-Dynamic routing
-Protected routes
-
-
-State Management with Redux
-
-Redux principles
-Actions, reducers, and store
-React-Redux hooks (useSelector, useDispatch)
-Redux Toolkit
-Async actions with Redux Thunk
-
+Fetch API v
+Axios - done.
+Handling asynchronous operations - done.
+React-query - done.
 
 Advanced Component Patterns
 
@@ -97,11 +79,25 @@ Render props
 Compound components
 
 
+Routing in React
+
+React Router basics
+Dynamic routing
+Protected routes
+
 Performance Optimization
 
-React.memo
-useMemo and useCallback
+React.memo - done
+useMemo and useCallback - done
 Code splitting and lazy loading
+
+State Management with Redux
+
+Redux principles
+Actions, reducers, and store
+React-Redux hooks (useSelector, useDispatch)
+Redux Toolkit
+Async actions with Redux Thunk
 
 
 Advanced React Concepts
@@ -114,7 +110,7 @@ Refs and forwardRef
 
 State Management Alternatives
 
-Context API with useReducer
+Context API with useReducer - done
 Recoil
 
 Advanced Redux and TypeScript
@@ -124,12 +120,7 @@ Middleware
 Selectors and reselect
 Normalized state structure
 
-React Design Patterns and Best Practices
-
-Component composition
-Container and presentational components
 React project structure
-
 
 Animations in React
 
