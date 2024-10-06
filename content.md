@@ -77,13 +77,23 @@ Advanced Component Patterns
 Higher-Order Components (HOCs)
 Render props
 Compound components
+Error Boundry
 
 
 Routing in React
 
-React Router basics
+React Router basics - done
 Dynamic routing
-Protected routes
+Private/Protected routes
+Condtion routing redirect
+Lazy routing
+Suspense loading 
+useParam, queryParams, routeParams
+Nested routing
+Error Element
+RouterProvider
+createBrowserRouter
+Roles
 
 Performance Optimization
 
