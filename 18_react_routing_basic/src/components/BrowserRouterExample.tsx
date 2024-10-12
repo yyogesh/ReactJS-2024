@@ -16,6 +16,7 @@ const BrowserRouterExample = () => {
                     <Route path="/contact" element={<Contactus />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
+                
             </Routes>
         </BrowserRouter>
     )
