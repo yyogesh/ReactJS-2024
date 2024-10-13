@@ -84,12 +84,12 @@ Routing in React
 
 React Router basics - done
 Dynamic routing
-Private/Protected routes
-Condtion routing redirect
+Private/Protected routes - done
+Condtion routing redirect - done
 Lazy routing
 Suspense loading 
-useParam, queryParams, routeParams
-Nested routing
+useParam, queryParams, routeParams - done
+Nested routing - done
 Error Element
 RouterProvider
 createBrowserRouter
