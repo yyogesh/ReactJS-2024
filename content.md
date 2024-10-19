@@ -79,27 +79,26 @@ Render props
 Compound components
 Error Boundry
 
-
 Routing in React
 
 React Router basics - done
-Dynamic routing
+Dynamic routing - done
 Private/Protected routes - done
 Condtion routing redirect - done
-Lazy routing
-Suspense loading 
+Lazy routing - done
+Suspense loading  - done
 useParam, queryParams, routeParams - done
 Nested routing - done
 Error Element
-RouterProvider
-createBrowserRouter
-Roles
+RouterProvider - done
+createBrowserRouter - done
+Roles - done
 
 Performance Optimization
 
 React.memo - done
 useMemo and useCallback - done
-Code splitting and lazy loading
+Code splitting and lazy loading - done
 
 State Management with Redux
 
@@ -108,7 +107,6 @@ Actions, reducers, and store
 React-Redux hooks (useSelector, useDispatch)
 Redux Toolkit
 Async actions with Redux Thunk
-
 
 Advanced React Concepts
 
