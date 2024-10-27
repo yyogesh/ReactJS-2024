@@ -67,17 +67,18 @@ Form validation - done.
 Formik - done.
 
 HTTP Requests and API Integration
-Fetch API v
+Fetch API v - done.
 Axios - done.
 Handling asynchronous operations - done.
 React-query - done.
 
 Advanced Component Patterns
 
-Higher-Order Components (HOCs)
-Render props
-Compound components
-Error Boundry
+Higher-Order Components (HOCs) - done.
+Render props - done.
+Compound components - done.
+Error Boundry - done.
+Portals  - done.
 
 Routing in React
 
@@ -107,14 +108,7 @@ Actions, reducers, and store
 React-Redux hooks (useSelector, useDispatch)
 Redux Toolkit
 Async actions with Redux Thunk
-
-Advanced React Concepts
-
-Context API
-Error boundaries
-Portals
-Refs and forwardRef
-
+Saga
 
 State Management Alternatives
 
@@ -135,7 +129,6 @@ Animations in React
 CSS transitions
 React Transition Group
 Framer Motion basics
-
 
 Deployment and Build Optimization
 
