@@ -1,9 +1,9 @@
 import { Provider } from 'react-redux'
 import './App.css'
-import ProductList from './components/ProductList'
 import { store } from './store'
 import UserProfile from './components/UserProfile'
 import Cart from './components/Cart'
+import ProductList from './components/ProductList'
 
 function App() {
 
