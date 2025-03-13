@@ -8,11 +8,16 @@ namespace ConsoleAutoScreenClicker
 {
     class Program
     {
-        // Import the user32.dll to simulate mouse clicks
+        // Import user32.dll functions for mouse simulation
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
 
-        // Import user32.dll to get cursor position
+        // Import SetCursorPos to position the cursor
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool SetCursorPos(int x, int y);
+
+        // Import GetCursorPos to get cursor position
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool GetCursorPos(out POINT lpPoint);
@@ -306,8 +311,8 @@ namespace ConsoleAutoScreenClicker
 
         static void PerformClick(int x, int y)
         {
-            // Move cursor to specified position
-            Cursor.Position = new Point(x, y);
+            // Move cursor to specified position using Windows API
+            SetCursorPos(x, y);
             
             // Simulate mouse click
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
