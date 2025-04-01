@@ -1,39 +1,95 @@
-MockContext.Setup(static m => m.Procedures.GetDataAffiliationsAsync(
-    null,  // licenseStateList - null in your test scenario
-    null,  // affiliationStatusList - null in your test scenario
-    "AgentNPN",  // AgentNPN from your test
-    "CA",   // LicenseNbr from your test
-    "MA",   // AgentSAN from your test
-    null, default))
-    .ReturnsAsync(new List<GetDataAffiliationsResult>() { });  // Return empty list to match expected count of 0
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using AutoMapper;
+using YourNamespace.Models; // Replace with your actual namespace
+using YourNamespace.Data;   // Replace with your actual namespace
 
-
-
-[Test]
-public void GetAffiliationsWithMultipleResultsTest()
+namespace YourNamespace.Tests
 {
-    // First set up the mock to return multiple results
-    MockContext.Setup(static m => m.Procedures.GetDataAffiliationsAsync(
-        It.IsAny<string>(),
-        It.IsAny<string>(),
-        "MULTIPLE",  // This is the AgentNPN we'll use in our test
-        "TEST123",   // This is the LicenseNbr we'll use in our test
-        It.IsAny<string>(),
-        null, default))
-        .ReturnsAsync(new List<GetDataAffiliationsResult>() 
-        { 
-            new GetDataAffiliationsResult(),
-            new GetDataAffiliationsResult(),
-            new GetDataAffiliationsResult() 
-        });  // Return 3 items
+    [TestClass]
+    public class AffiliationRepoTest
+    {
+        private AffiliationRepo _affiliationRepo;
+        private Mock<ISCOREContext> MockContext = new Mock<ISCOREContext>();
+        private IMapper _mapper;
 
-    // Call the repository method with matching parameters
-    var result = _affiliationRepo.GetAffiliations(new AffiliationSearchDto() 
-    { 
-        AgentNPN = "MULTIPLE", 
-        LicenseNbr = "TEST123" 
-    });
+        [TestInitialize]
+        public void Setup()
+        {
+            var getInMemoryDatabaseContext = new GetInMemoryDatabaseContext();
+            var _context = getInMemoryDatabaseContext.GetContext();
+            
+            if (_mapper == null)
+            {
+                var mappingConfig = new MapperConfiguration(static mc =>
+                {
+                    mc.AddProfile(new DomainDtoProfiles());
+                });
+                _mapper = mappingConfig.CreateMapper();
+            }
+            
+            // Setup mock procedures
+            var mockProcedures = new Mock<ISCOREContextProcedures>();
+            MockContext.Setup(m => m.Procedures).Returns(mockProcedures.Object);
+            
+            // Setup default behavior for GetDataAffiliationsAsync
+            MockContext.Setup(m => m.Procedures.GetDataAffiliationsAsync(
+                It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+                It.IsAny<string>(), It.IsAny<string>(), null, default))
+                .ReturnsAsync(new List<GetDataAffiliationsResult>());
+                
+            // Setup specific mock for first test case
+            MockContext.Setup(m => m.Procedures.GetDataAffiliationsAsync(
+                null, null, "AgentNPN", "CA", "MA", null, default))
+                .ReturnsAsync(new List<GetDataAffiliationsResult>());
+                
+            // Setup specific mock for second test case
+            MockContext.Setup(m => m.Procedures.GetDataAffiliationsAsync(
+                null, null, "TEST", "TEST", null, null, default))
+                .ReturnsAsync(new List<GetDataAffiliationsResult>());
+                
+            // Setup specific mock for third test case with multiple results
+            MockContext.Setup(m => m.Procedures.GetDataAffiliationsAsync(
+                null, null, "MULTIPLE", "TEST123", null, null, default))
+                .ReturnsAsync(new List<GetDataAffiliationsResult>()
+                {
+                    new GetDataAffiliationsResult(),
+                    new GetDataAffiliationsResult(),
+                    new GetDataAffiliationsResult()
+                });
+            
+            _affiliationRepo = new AffiliationRepo(MockContext.Object, _mapper);
+        }
 
-    // Assert that the result count is 3
-    Assert.That(result.Result.Count(), Is.EqualTo(3));
+        [TestMethod]
+        public void GetAffiliationsTest()
+        {
+            var result = _affiliationRepo.GetAffiliations(new AffiliationSearchDto() { AgentNPN = "AgentNPN", LicenseNbr = "CA", AgentSAN = "MA" });
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void GetAffiliationsWithNoRecordTest()
+        {
+            var result = _affiliationRepo.GetAffiliations(new AffiliationSearchDto() { AgentNPN = "TEST", LicenseNbr = "TEST" });
+            Assert.AreEqual(0, result.Result.Count());
+        }
+
+        [TestMethod]
+        public void GetAffiliationsWithMultipleResultsTest()
+        {
+            // Test with parameters that will match our mock returning 3 items
+            var result = _affiliationRepo.GetAffiliations(new AffiliationSearchDto() 
+            { 
+                AgentNPN = "MULTIPLE", 
+                LicenseNbr = "TEST123" 
+            });
+            
+            // Assert we get exactly 3 items back
+            Assert.AreEqual(3, result.Result.Count());
+        }
+    }
 }
