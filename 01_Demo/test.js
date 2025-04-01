@@ -1,23 +1,39 @@
-You are given an integer n. Your task is to return the first n rows of Floyd’s Triangle, represented as a list of strings. Floyd's Triangle is a triangular array of natural numbers where the first row contains 1, the second row contains 2 and 3, the third row contains 4, 5, and 6, and so on.
+MockContext.Setup(static m => m.Procedures.GetDataAffiliationsAsync(
+    null,  // licenseStateList - null in your test scenario
+    null,  // affiliationStatusList - null in your test scenario
+    "AgentNPN",  // AgentNPN from your test
+    "CA",   // LicenseNbr from your test
+    "MA",   // AgentSAN from your test
+    null, default))
+    .ReturnsAsync(new List<GetDataAffiliationsResult>() { });  // Return empty list to match expected count of 0
 
 
 
-Input:
+[Test]
+public void GetAffiliationsWithMultipleResultsTest()
+{
+    // First set up the mock to return multiple results
+    MockContext.Setup(static m => m.Procedures.GetDataAffiliationsAsync(
+        It.IsAny<string>(),
+        It.IsAny<string>(),
+        "MULTIPLE",  // This is the AgentNPN we'll use in our test
+        "TEST123",   // This is the LicenseNbr we'll use in our test
+        It.IsAny<string>(),
+        null, default))
+        .ReturnsAsync(new List<GetDataAffiliationsResult>() 
+        { 
+            new GetDataAffiliationsResult(),
+            new GetDataAffiliationsResult(),
+            new GetDataAffiliationsResult() 
+        });  // Return 3 items
 
-A single integer n, where 1 <= n <= 100.
+    // Call the repository method with matching parameters
+    var result = _affiliationRepo.GetAffiliations(new AffiliationSearchDto() 
+    { 
+        AgentNPN = "MULTIPLE", 
+        LicenseNbr = "TEST123" 
+    });
 
-
-
-Output:
-
-A list of strings where each string represents a row in Floyd's Triangle.
-
-
-
-Example:
-
-Input: 5
-Output: ['1', '2 3', '4 5 6', '7 8 9 10', '11 12 13 14 15']
- 
-Input: 3
-Output: ['1', '2 3', '4 5 6']
+    // Assert that the result count is 3
+    Assert.That(result.Result.Count(), Is.EqualTo(3));
+}
